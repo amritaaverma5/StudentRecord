@@ -17,18 +17,18 @@ pipeline {
     stage('Deploy with Docker Compose') {
       steps {
         script {
-          sh 'docker compose down'
-          sh 'docker compose up -d'
+          sh 'docker-compose down'
+          sh 'docker-compose up -d'
         }
       }
     }
     stage('Verify Services') {
       steps {
         script {
-          sh 'docker compose ps'
+          sh 'docker-compose ps'
           sh 'sleep 5'
-          sh 'docker compose logs backend | head -20'
-          sh 'docker compose logs frontend | head -20'
+          sh 'docker-compose logs backend | head -20'
+          sh 'docker-compose logs frontend | head -20'
         }
       }
     }

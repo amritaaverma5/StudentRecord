@@ -38,7 +38,8 @@ services:
       - backend
 
   jenkins:
-    image: jenkins/jenkins:lts-jdk17
+    build:
+      context: ./jenkins
     container_name: lab27-jenkins
     restart: unless-stopped
     ports:
