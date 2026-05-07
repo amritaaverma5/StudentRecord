@@ -1,41 +1,35 @@
 pipeline {
   agent any
+  options {
+    skipDefaultCheckout(true)
+  }
   stages {
     stage('Checkout') {
       steps {
         checkout scm
       }
     }
-    stage('Build Docker Images') {
-      steps {
-        script {
-          sh 'docker build -t lab27-backend:latest ./backend'
-          sh 'docker build -t lab27-frontend:latest ./frontend'
-        }
-      }
-    }
     stage('Deploy with Docker Compose') {
       steps {
         script {
-          sh 'docker-compose down'
-          sh 'docker-compose up -d'
+          sh 'docker-compose -p lab27 up -d --build --remove-orphans'
         }
       }
     }
     stage('Verify Services') {
       steps {
         script {
-          sh 'docker-compose ps'
+          sh 'docker-compose -p lab27 ps'
           sh 'sleep 5'
-          sh 'docker-compose logs backend | head -20'
-          sh 'docker-compose logs frontend | head -20'
+          sh 'docker-compose -p lab27 logs backend | head -20'
+          sh 'docker-compose -p lab27 logs frontend | head -20'
         }
       }
     }
   }
   post {
     always {
-      sh 'docker compose logs > pipeline-logs.txt'
+      sh 'docker-compose -p lab27 logs --no-color > pipeline-logs.txt || true'
       archiveArtifacts artifacts: 'pipeline-logs.txt', allowEmptyArchive: true
     }
     success {
