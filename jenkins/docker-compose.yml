@@ -1,0 +1,18 @@
+services:
+  jenkins:
+    build:
+      context: .
+    container_name: capstone-jenkins-ci
+    restart: unless-stopped
+    ports:
+      - "8090:8080"
+      - "50001:50000"
+    user: root
+    volumes:
+      - capstone_jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=true
+
+volumes:
+  capstone_jenkins_home:

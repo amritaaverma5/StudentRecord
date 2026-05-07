@@ -42,7 +42,7 @@ pipeline {
       echo 'Pipeline completed successfully! Services are running on:'
       echo 'Frontend: http://localhost:3000'
       echo 'Backend: http://localhost:8000'
-      echo 'MongoDB: mongodb://localhost:27017'
+      echo 'MongoDB: mongodb://localhost:27018'
     }
     failure {
       echo 'Pipeline failed. Check the logs above.'

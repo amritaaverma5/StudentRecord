@@ -37,21 +37,5 @@ services:
     depends_on:
       - backend
 
-  jenkins:
-    build:
-      context: ./jenkins
-    container_name: lab27-jenkins
-    restart: unless-stopped
-    ports:
-      - "8080:8080"
-      - "50000:50000"
-    user: root
-    volumes:
-      - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - JAVA_OPTS=-Djenkins.install.runSetupWizard=true
-
 volumes:
   mongodb_data:
-  jenkins_home:
