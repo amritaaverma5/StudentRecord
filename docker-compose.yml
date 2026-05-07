@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: lab27-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: myAppDB
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  backend:
+    build:
+      context: ./backend
+    container_name: lab27-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - MONGO_URI=mongodb://mongodb:27017/myAppDB
+    depends_on:
+      - mongodb
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: lab27-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - HOST=0.0.0.0
+      - PORT=3000
+    depends_on:
+      - backend
+
+  jenkins:
+    image: jenkins/jenkins:lts-jdk17
+    container_name: lab27-jenkins
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    user: root
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+
+volumes:
+  mongodb_data:
+  jenkins_home:

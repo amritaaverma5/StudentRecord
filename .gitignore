@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+.DS_Store
+.vscode
+.env
+jenkins_home
+frontend/node_modules
+frontend/build
+backend/node_modules

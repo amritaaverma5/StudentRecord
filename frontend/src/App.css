@@ -1,0 +1,503 @@
+/* ================================
+   🌌 ULTRA MODERN FUTURISTIC UI
+================================ */
+
+/* Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #050816;
+  position: relative;
+  color: white;
+}
+
+/* 🌈 Animated Gradient Background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(120deg,
+      #ff0080,
+      #7928ca,
+      #007cf0,
+      #00dfd8,
+      #ff4d4d,
+      #ff0080);
+  background-size: 400% 400%;
+  animation: gradientFlow 18s ease infinite;
+  z-index: -3;
+  filter: blur(0px);
+}
+
+/* 🌌 Floating Glow Orbs */
+body::after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 0, 128, 0.35), transparent 20%),
+    radial-gradient(circle at 80% 30%, rgba(0, 255, 255, 0.3), transparent 20%),
+    radial-gradient(circle at 50% 80%, rgba(140, 0, 255, 0.35), transparent 20%);
+  animation: floatingOrbs 20s infinite alternate ease-in-out;
+  z-index: -2;
+}
+
+/* ✨ Tiny Stars */
+.stars {
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(white 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.08;
+  z-index: -1;
+  animation: starsMove 60s linear infinite;
+}
+
+.App {
+  padding: 40px 20px;
+}
+
+/* ================================
+   🧊 MAIN CONTAINER
+================================ */
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  perspective: 1500px;
+}
+
+/* ================================
+   🔥 TITLE
+================================ */
+
+h1 {
+  text-align: center;
+  font-size: 4rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  background: linear-gradient(90deg,
+      #ffffff,
+      #00f7ff,
+      #ff00ea,
+      #ffffff);
+
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    textGlow 4s linear infinite,
+    fadeDown 1s ease;
+}
+
+/* ================================
+   💎 GLASS CARD
+================================ */
+
+.section {
+  position: relative;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-radius: 28px;
+
+  padding: 30px;
+  margin-bottom: 35px;
+
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.45),
+    inset 0 0 25px rgba(255, 255, 255, 0.05);
+
+  transition: all 0.5s ease;
+
+  animation: fadeUp 1s ease;
+  transform-style: preserve-3d;
+}
+
+/* ✨ Animated Border */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+
+  background: linear-gradient(135deg,
+      #ff00ea,
+      #00f7ff,
+      #8f00ff,
+      #ff6a00,
+      #00f7ff);
+
+  background-size: 400% 400%;
+  animation: borderAnimation 8s linear infinite;
+
+  border-radius: inherit;
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0.7;
+}
+
+/* 🌟 Hover 3D Effect */
+.section:hover {
+  transform:
+    rotateX(4deg) rotateY(-4deg) translateY(-10px) scale(1.02);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(0, 255, 255, 0.4);
+}
+
+/* ================================
+   🧾 HEADINGS
+================================ */
+
+.section h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+
+  background: linear-gradient(90deg, #ffffff, #00f7ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ================================
+   🧠 INPUTS
+================================ */
+
+input,
+select {
+  width: 100%;
+  padding: 14px 18px;
+  margin-top: 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+
+  outline: none;
+
+  transition: all 0.35s ease;
+
+  backdrop-filter: blur(10px);
+  font-size: 15px;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+input:focus,
+select:focus {
+  transform: scale(1.03);
+
+  border-color: #00f7ff;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  box-shadow:
+    0 0 15px rgba(0, 247, 255, 0.7),
+    0 0 35px rgba(255, 0, 234, 0.3);
+}
+
+/* ================================
+   🚀 BUTTONS
+================================ */
+
+button {
+  margin-top: 15px;
+  padding: 14px 22px;
+
+  border: none;
+  border-radius: 16px;
+
+  cursor: pointer;
+  position: relative;
+
+  overflow: hidden;
+
+  background: linear-gradient(135deg,
+      #00f7ff,
+      #0077ff,
+      #ff00ea,
+      #ff6a00);
+
+  background-size: 300% 300%;
+
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  transition: all 0.35s ease;
+
+  animation: buttonGradient 6s ease infinite;
+
+  box-shadow:
+    0 0 15px rgba(0, 247, 255, 0.4),
+    0 0 35px rgba(255, 0, 234, 0.2);
+}
+
+/* ⚡ Shine Effect */
+button::before {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(120deg,
+      transparent,
+      rgba(255, 255, 255, 0.5),
+      transparent);
+
+  transition: 0.6s;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:hover {
+  transform: translateY(-4px) scale(1.05);
+
+  box-shadow:
+    0 0 25px rgba(0, 247, 255, 0.8),
+    0 0 45px rgba(255, 0, 234, 0.6);
+}
+
+/* ================================
+   📦 LIST
+================================ */
+
+.list {
+  margin-top: 20px;
+}
+
+/* ================================
+   🎯 LIST ITEM
+================================ */
+
+.list-item {
+  position: relative;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  padding: 18px;
+  margin-bottom: 16px;
+
+  border-radius: 18px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  overflow: hidden;
+
+  transition: all 0.4s ease;
+
+  animation: fadeIn 0.8s ease;
+
+  backdrop-filter: blur(12px);
+}
+
+/* ✨ Glow Strip */
+.list-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 5px;
+  height: 100%;
+
+  background: linear-gradient(to bottom,
+      #00f7ff,
+      #ff00ea,
+      #ff6a00);
+
+  animation: glowStrip 4s linear infinite;
+}
+
+.list-item:hover {
+  transform: translateY(-6px) scale(1.02);
+
+  background: rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(0, 247, 255, 0.3);
+}
+
+/* ================================
+   🎬 ANIMATIONS
+================================ */
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  25% {
+    background-position: 50% 100%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  75% {
+    background-position: 50% 0%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes borderAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 400% 50%;
+  }
+}
+
+@keyframes buttonGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes floatingOrbs {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  100% {
+    transform: scale(1.2) rotate(10deg);
+  }
+}
+
+@keyframes starsMove {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-100px);
+  }
+}
+
+@keyframes textGlow {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 300% center;
+  }
+}
+
+@keyframes glowStrip {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ================================
+   📱 RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .section {
+    padding: 22px;
+  }
+
+  .list-item {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
