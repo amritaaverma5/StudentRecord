@@ -6,6 +6,8 @@ const studentSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Course"
   }]
+}, {
+  collection: "students"
 });
 
-module.exports = mongoose.model("Student", studentSchema, "student");
+module.exports = mongoose.model("Student", studentSchema);

@@ -13,7 +13,7 @@ docker compose up --build
 
 - Frontend: http://localhost:3000
 - Backend: http://localhost:8000
-- MongoDB: mongodb://localhost:27017
+- MongoDB: mongodb://localhost:27018
 - Jenkins: http://localhost:8080
 
 ## Services
